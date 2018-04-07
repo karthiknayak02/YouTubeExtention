@@ -4,8 +4,9 @@
     "description": "no description",
 
 
-    "permissions": ["declarativeContent","storage"],
+    "permissions": ["activeTab", "declarativeContent","storage"],
 
+    "options_page": "options.html",
 
     "background": 
     {

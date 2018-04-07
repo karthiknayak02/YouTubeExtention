@@ -13,21 +13,20 @@ function get_search_string() {
 document.getElementById('search').onclick = get_search_string;
 
 
-// function add(type) {
-//   //Create an input type dynamically.   
-//   var element = document.createElement("input");
-//   //Assign different attributes to the element. 
-//   // element.type = type;
-//   // element.value = type; // Really? You want the default value to be the type string?
-//   // element.name = type; // And the name too?
-//   element.onclick = function() { // Note this is a function
-//     alert("blabla");
-//   };
+function add(type) {
+  //Create an input type dynamically.   
+  var element = document.createElement("input");
+  //Assign different attributes to the element. 
+  element.type = "button";
+  element.value = "button value";
+  element.name = "button name"; 
+  element.onclick = get_search_string; // this is where you should JUMPPPPP
 
-//   var foo = document.getElementById("fooBar");
-//   //Append the element in page (in span).  
-//   foo.appendChild(element);
-// }
-// document.getElementById("btnAdd").onclick = function() {
-//   add("text");
-// };
+  var foo = document.getElementById("fooBar");
+  //Append the element in page (in span).  
+  foo.appendChild(element);
+}
+
+document.getElementById("addBtn").onclick = function() {
+  add("text");
+};

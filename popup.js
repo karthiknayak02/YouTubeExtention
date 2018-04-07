@@ -11,12 +11,17 @@ document.getElementById('search').onclick = get_search_string;
 
 function add(type) {
   //Create an input type dynamically.   
-  var element = document.createElement("input");
+  var element = document.createElement("button");
   var br = document.createElement("br");
   //Assign different attributes to the element. 
   element.type = "button";
-  element.value = type;
+  element.value = "typfasfae";
+  element.innerHTML = 'hello';
   element.name = "button name"; 
+  element.style.height = "30px";
+  element.style.width = "350px";
+  element.style.border= "0.5px solid #ff1a1a";
+
   element.onclick = get_search_string; // this is where you should JUMPPPPP
 
   // var foo = document.getElementById("resultfield");

@@ -1,41 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="styles.css">
     <style>
-      button {
-        height: 30px;
-        width: 70px;
-        outline: none;
-        font-size: 18px;
-      }
-      textarea {
-        width: 350px;
-        height: 15px;
-        border: 2px solid #cccccc;
-        font-size: 18px;
-        padding: 3px;
-        font-family: Tahoma, sans-serif;
-      }
-      p {
-        font-size: 15px;
-      }
     </style>
   </head>
-  <body>
+  <body style="background-color:#666666;">
 <!--     <button id="changeColor">hello</button>
     <button type="button" onclick="myFunction()">Try it</button> -->
-    <textarea rows="4" cols="50" autocomplete="on" id="searchbox"> </textarea>
-    <button type="button" id="search">Search</button>
-    <button type="button" id="addBtn">Test</button>
+    <textarea placeholder="Search" id="searchbox"></textarea>
+    <button class="red" id="search">SEARCH</button>
     <p id="demo">demo area default</p>
 
-    <p id="resultfield">
-
-    </p>
-
-<!--     <input type="button" id="btnAdd" value="Add Text Field">
-    <p id="fooBar">Fields:</p> -->
-
+    <p id="resultfield"></p>
+    
     <script src="popup.js"></script>
   </body>
 </html>

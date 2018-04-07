@@ -16,3 +16,9 @@ changeColor.onclick = function(element) {
         tabs[0].id,
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
 };
+
+function myFunction() {
+    var x = document.getElementById("searchbox").value;
+    print
+    document.getElementById("demo").innerHTML = x;
+}

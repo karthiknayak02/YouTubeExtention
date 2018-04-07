@@ -1,6 +1,9 @@
 import requests
 from pprint import pprint
 from bs4 import BeautifulSoup
+import html
+import spacy
+import time
 
 
 def generate_url(video_url):
@@ -21,15 +24,40 @@ def get_transcripts(transcript_url):
         if body:
             xml_text = BeautifulSoup(body, 'html.parser')
             transcript = xml_text.transcript
+            parsed = []
             for i in transcript.find_all('text'):
-                print(i)
+
+                line = [float(i['start']), float(i['dur']), html.unescape(i.text)]
+                parsed.append(line)
+            return parsed
 
         else:
             print("This link has no text in it.")
     else:
         print("response code error: ", response.status_code)
 
+
+def normalize_lines(nlp, transcript_text):
+
+    for line in transcript_text:
+        #print("Before:", line[2])
+        tokens = nlp(line[2])
+        split_line = []
+        for token in tokens:
+            if (not token.is_stop) and (not token.is_punct):
+                split_line.append(token.text)
+        line[2] = split_line
+        #print("After:", line[2])
+
+
 def main():
+    start = time.time()
+    nlp = spacy.load("en")
+    print("Model Load time:", start - time.time())
+    for word in nlp.Defaults.stop_words:
+        lex = nlp.vocab[word]
+        lex.is_stop = True
+
     noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
     works = ["https://www.youtube.com/watch?v=TUgBd-yK7-4",
                  "https://www.youtube.com/watch?v=TUgBd-yK7-4",
@@ -42,8 +70,13 @@ def main():
                  "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
 
     for link in works:
+        n_start = time.time()
         transcript_url = generate_url(link)
-        get_transcripts(transcript_url)
+        parsed_transcript = get_transcripts(transcript_url)
+        normalize_lines(nlp, parsed_transcript)
+        print("Time: ", time.time() - n_start)
+
+
         input("~~~~~~~~~DONE WITH THAT LINK~~~~~~~~~~~~")
 
 

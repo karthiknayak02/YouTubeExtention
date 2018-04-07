@@ -16,21 +16,23 @@ def generate_url(video_url):
         return -1
 
 
+def parse_xml(body):
+    xml_text = BeautifulSoup(body, 'xml')
+    transcript = xml_text.transcript
+    parsed = []
+    for i in transcript.find_all('text'):
+        line = [float(i['start']), float(i['dur']), html.unescape(i.text)]
+        parsed.append(line)
+    return parsed
+
+
 def get_transcripts(transcript_url):
     response = requests.get(transcript_url)
 
     if response.status_code == 200:
         body = response.text
         if body:
-            xml_text = BeautifulSoup(body, 'html.parser')
-            transcript = xml_text.transcript
-            parsed = []
-            for i in transcript.find_all('text'):
-
-                line = [float(i['start']), float(i['dur']), html.unescape(i.text)]
-                parsed.append(line)
-            return parsed
-
+            parse_xml(body)
         else:
             print("This link has no text in it.")
     else:
@@ -49,6 +51,18 @@ def normalize_lines(nlp, transcript_text):
         line[2] = split_line
         #print("After:", line[2])
 
+    return transcript_text
+
+
+def keyword_extraction(transcript_text):
+    transcript_string = ""
+    for line in transcript_text:
+        for word in line[2]:
+            transcript_string += word+" "
+
+    transcript_string.strip()
+
+    #print(transcript_string)
 
 def main():
     start = time.time()
@@ -71,10 +85,15 @@ def main():
 
     for link in works:
         n_start = time.time()
-        transcript_url = generate_url(link)
-        parsed_transcript = get_transcripts(transcript_url)
-        normalize_lines(nlp, parsed_transcript)
-        print("Time: ", time.time() - n_start)
+        # transcript_url = generate_url(link)
+        # parsed_transcript = get_transcripts(transcript_url)
+
+        with open("timedtext.xml") as file:
+            text = file.read()
+            parsed_transcript = parse_xml(text)
+            transcript_text = normalize_lines(nlp, parsed_transcript)
+            keyword_extraction(transcript_text)
+            print("Time: ", time.time() - n_start)
 
 
         input("~~~~~~~~~DONE WITH THAT LINK~~~~~~~~~~~~")

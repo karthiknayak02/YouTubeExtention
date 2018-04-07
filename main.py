@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import html
 import spacy
 import time
+import Naive_bayes
 
 
 def generate_url(video_url):
@@ -61,6 +62,8 @@ def keyword_extraction(transcript_text):
             transcript_string += word+" "
 
     transcript_string.strip()
+
+    Naive_bayes.main(transcript_string)
 
     #print(transcript_string)
 

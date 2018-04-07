@@ -1,7 +1,3 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 'use strict';
 
 var x="";
@@ -16,17 +12,33 @@ document.getElementById('search').onclick = get_search_string;
 function add(type) {
   //Create an input type dynamically.   
   var element = document.createElement("input");
+  var br = document.createElement("br");
   //Assign different attributes to the element. 
   element.type = "button";
-  element.value = "button value";
+  element.value = type;
   element.name = "button name"; 
   element.onclick = get_search_string; // this is where you should JUMPPPPP
 
-  var foo = document.getElementById("fooBar");
+  // var foo = document.getElementById("resultfield");
   //Append the element in page (in span).  
-  foo.appendChild(element);
+  // foo.appendChild(element);
+  document.body.appendChild(element);
+  document.body.appendChild(br);
 }
 
-document.getElementById("addBtn").onclick = function() {
-  add("text");
-};
+// document.getElementById("addBtn").onclick = function() {
+//   add("text");
+// };
+
+var i;
+for (i = 0; i < 10; i++) { 
+    add("hello");
+}
+
+// {
+// 	"3.3"	: "I’ve had my ups and downs",
+// 	"5.8"	: "my fair share of bumpy roads and heavy winds."
+// 	"9.868"	: "That’s what made me what I am today."
+// 	"13.901": "Now I stand here before you."
+// 	"16.985": "What you see is a body crafted to perfection"
+// }

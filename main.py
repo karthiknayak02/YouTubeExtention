@@ -19,19 +19,32 @@ def get_transcripts(transcript_url):
     if response.status_code == 200:
         body = response.text
         if body:
-            soup = BeautifulSoup(body, 'html.parser')
-            print(soup.prettify())
+            xml_text = BeautifulSoup(body, 'html.parser')
+            transcript = xml_text.transcript
+            for i in transcript.find_all('text'):
+                print(i)
+
         else:
             print("This link has no text in it.")
     else:
         print("response code error: ", response.status_code)
 
 def main():
-    noworks = "https://www.youtube.com/watch?v=E8RrVitzI9I"
-    works = "https://www.youtube.com/watch?v=n3qA8DNc2Ss"
+    noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
+    works = ["https://www.youtube.com/watch?v=TUgBd-yK7-4",
+                 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
+                 "https://www.youtube.com/watch?v=b4k-KPELNcc",
+                 "https://www.youtube.com/watch?v=8UhqkX2VAmo",
+                 "https://www.youtube.com/watch?v=6oLsJUH1cfU",
+                 "https://www.youtube.com/watch?v=fWqKalpYgLo",
+                 "https://www.youtube.com/watch?v=t8R_GKS-M2Y",
+                 "https://www.youtube.com/watch?v=JrRRvqgYgT0",
+                 "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
 
-    transcript_url = generate_url(works)
-    get_transcripts(transcript_url)
+    for link in works:
+        transcript_url = generate_url(link)
+        get_transcripts(transcript_url)
+        input("~~~~~~~~~DONE WITH THAT LINK~~~~~~~~~~~~")
 
 
 

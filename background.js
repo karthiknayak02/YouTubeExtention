@@ -21,3 +21,5 @@ chrome.omnibox.onInputEntered.addListener(
     var newURL = 'https://www.google.com/search?q=' + encodeURIComponent(text);
     chrome.tabs.create({ url: newURL });
   });
+
+string chrome.runtime.getURL(string path)

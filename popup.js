@@ -9,7 +9,8 @@ function get_search_string() {
     x = document.getElementById("searchbox").value;
     document.getElementById('demo').textContent = x;
 }
-document.getElementById('do-count').onclick = count;
+
+document.getElementById('search').onclick = get_search_string;
 
 
 // function add(type) {

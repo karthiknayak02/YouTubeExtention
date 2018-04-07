@@ -1,6 +1,6 @@
 import requests
-import xml.etree.ElementTree as ET
 from pprint import pprint
+from bs4 import BeautifulSoup
 
 
 def generate_url(video_url):
@@ -19,9 +19,8 @@ def get_transcripts(transcript_url):
     if response.status_code == 200:
         body = response.text
         if body:
-            tree = ET.fromstring(body)
-            pprint(tree.tag)
-            pprint(tree.attrib)
+            soup = BeautifulSoup(body, 'html.parser')
+            print(soup.prettify())
         else:
             print("This link has no text in it.")
     else:

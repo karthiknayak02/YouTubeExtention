@@ -1,6 +1,7 @@
 'use strict';
 
 var url = ""
+var time = ""
 
 // get current tab url
 chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
@@ -39,30 +40,14 @@ function add(index, button_text, button_value) {
   element.style.width = "350px";
   element.style.border= "0.5px solid #ff1a1a";
 
-  // element.onclick =  "button_click(this)";
-  element.addEventListener("click", button_click); // this is where you should JUMPPPPP
+  element.addEventListener("click", button_click); // this is where you JUMPPPPP
 
-  // var foo = document.getElementById("resultfield");
-  //Append the element in page (in span).  
-  // foo.appendChild(element);
   document.body.appendChild(element);
   document.body.appendChild(br);
 }
 
 
-// document.addEventListener("click", function(e) {
-//   if (!e.target.classList.contains("terms")) {
-//     return;
-//   }
-//   console.log("hi");
-//   var name = e.target.textContent;
 
-
-// });
-
-
-
-var time = ""
 function button_click(e) {
 	 
   	time = e.target.value;

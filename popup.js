@@ -1,5 +1,11 @@
 'use strict';
 
+var url = ""
+
+chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+    url = tabs[0].url;
+});
+
 var x="";
 function get_search_string() {
     x = document.getElementById("searchbox").value;
@@ -39,6 +45,14 @@ var i;
 for (i = 0; i < 10; i++) { 
     add("hello");
 }
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 
 // {
 // 	"3.3"	: "I’ve had my ups and downs",

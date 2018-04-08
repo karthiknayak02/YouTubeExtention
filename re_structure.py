@@ -251,20 +251,19 @@ def main(nlp, ret_type):
 				 "timedtext0.xml",
 				 "timedtext11.xml"]
 
-	for link in txt_files:
+	for link in works:
 		n_start = time.time()
 
-		# # Takes in a youtube video link and generates a url link for the transcript api we are using.
-		# transcript_url = generate_url(link)
-		# # If the link is successfully generated
-		# if isinstance(transcript_url, str):
-		#
-		# # Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
-		# 	text = get_body(transcript_url)
+		# Takes in a youtube video link and generates a url link for the transcript api we are using.
+		transcript_url = generate_url(link)
+		# If the link is successfully generated
+		if isinstance(transcript_url, str):
+		# Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
+			text = get_transcripts(transcript_url)
 
-		with open(link) as file:
-			print("OPERATING ON:", link)
-			text = file.read()
+		# with open(link) as file:
+		# 	print("OPERATING ON:", link)
+		# 	text = file.read()
 			parsed_transcript = parse_xml(text)
 
 			# Iterates through all lines in the video and makes a bag of words.
@@ -300,8 +299,11 @@ def main(nlp, ret_type):
 						counter += 1
 			else:
 				return_list = for_now(normal_keywords)
+				repeat_topics = []
 				for item in return_list:
-					task[item[0]] = item[1]
+					if item[0].split(":")[0] not in repeat_topics:
+						task[item[0]] = str(float(item[1])-10)
+						repeat_topics.append(item[0].split(":")[0])
 
 
 

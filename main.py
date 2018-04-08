@@ -1,10 +1,25 @@
 import requests
-from pprint import pprint
 from bs4 import BeautifulSoup
 import html
 import spacy
 import time
-import Naive_bayes
+from collections import Counter
+
+stop_words = {'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't",
+              'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
+              'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't", 'doing', "don't", 'down',
+              'during', 'each', 'few', 'for', 'from', 'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't",
+              'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's", 'hers', 'herself', 'him', 'himself',
+              'his', 'how', "how's", 'i', "i'd", "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's",
+              'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my', 'myself', 'no', 'nor', 'not', 'of',
+              'off', 'on', 'once', 'only', 'or', 'other', 'ought', 'our', 'ours', 'ourselves', 'out', 'over', 'own',
+              'same', "shan't", 'she', "she'd", "she'll", "she's", 'should', "shouldn't", 'so', 'some', 'such', 'than',
+              'that', "that's", 'the', 'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's", 'these',
+              'they', "they'd", "they'll", "they're", "they've", 'this', 'those', 'through', 'to', 'too', 'under',
+              'until', 'up', 'very', 'was', "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't",
+              'what', "what's", 'when', "when's", 'where', "where's", 'which', 'while', 'who', "who's", 'whom', 'why',
+              "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 'your',
+              'yours', 'yourself', 'yourselves', '.', '!', '?', ','}
 
 
 def generate_url(video_url):
@@ -17,14 +32,40 @@ def generate_url(video_url):
         return -1
 
 
+def get_attributes(body):
+    xml_text = BeautifulSoup(body, 'xml')
+    transcript = xml_text.transcript
+    attributes = []
+    for attr in transcript.find('text').attrs:
+        attributes.append(attr)
+    return attributes
+
+
 def parse_xml(body):
     xml_text = BeautifulSoup(body, 'xml')
     transcript = xml_text.transcript
+    attributes = get_attributes(body)
     parsed = []
     for i in transcript.find_all('text'):
-        line = [float(i['start']), float(i['dur']), html.unescape(i.text)]
+        line = []
+        for at in attributes:
+            line.append(i[at])
+        line.append(html.unescape(i.text))
         parsed.append(line)
     return parsed
+
+
+def stop_word_removal(words):
+    [words.remove(word) for word in words[:] if word in stop_words]
+    return words
+
+
+def top_bigrams(words, count):
+    bi_list = []
+    offset = 1
+    for i in range(len(words) - offset):
+        bi_list.append(words[i] + " " + words[i + offset])
+    return Counter(bi_list).most_common(count)
 
 
 def get_transcripts(transcript_url):
@@ -40,40 +81,12 @@ def get_transcripts(transcript_url):
         print("response code error: ", response.status_code)
 
 
-def normalize_lines(nlp, transcript_text):
-
-    for line in transcript_text:
-        #print("Before:", line[2])
-        tokens = nlp(line[2])
-        split_line = []
-        for token in tokens:
-            if (not token.is_stop) and (not token.is_punct):
-                split_line.append(token.text)
-        line[2] = split_line
-        #print("After:", line[2])
-
-    return transcript_text
-
-
-def keyword_extraction(transcript_text):
-    transcript_string = ""
-    for line in transcript_text:
-        for word in line[2]:
-            transcript_string += word+" "
-
-    transcript_string.strip()
-
-    Naive_bayes.main(transcript_string)
-
-    #print(transcript_string)
-
 def main():
-    start = time.time()
-    nlp = spacy.load("en")
-    print("Model Load time:", start - time.time())
-    for word in nlp.Defaults.stop_words:
-        lex = nlp.vocab[word]
-        lex.is_stop = True
+
+    # SpaCy model loading <---------------- currently not using
+    # start = time.time()
+    # nlp = spacy.load("en")
+    # print("Model Load time:", start - time.time())
 
     noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
     works = ["https://www.youtube.com/watch?v=TUgBd-yK7-4",
@@ -88,18 +101,35 @@ def main():
 
     for link in works:
         n_start = time.time()
+
+        # # Takes in a youtube video link and generates a url link for the transcript api we are using.
         # transcript_url = generate_url(link)
+        # # If the link is successfully generated
+        # if isinstance(transcript_url, str):
+        #
+        # # Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
         # parsed_transcript = get_transcripts(transcript_url)
 
         with open("timedtext.xml") as file:
             text = file.read()
             parsed_transcript = parse_xml(text)
-            transcript_text = normalize_lines(nlp, parsed_transcript)
-            keyword_extraction(transcript_text)
+
+            # Iterates through all lines in the video and makes a bag of words.
+            words = []
+            for line in parsed_transcript:
+                words += line[-1].split()
+
+            # Keyword extractor. <------- Currently only removes stopwords and punctuation.
+            clean_words = stop_word_removal(words)
+
+            [print(i) for i in top_bigrams(clean_words, count=10)]
+
             print("Time: ", time.time() - n_start)
 
-
         input("~~~~~~~~~DONE WITH THAT LINK~~~~~~~~~~~~")
+
+        # else:
+        #     print("Failed to generate url for transcript api.")
 
 
 

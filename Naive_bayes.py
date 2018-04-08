@@ -19,6 +19,7 @@ stopwords0 = {'which', 'y', 'them', "that'll", 'o', "didn't", 'while', 'further'
 def text_to_frequencies(text_arr, freq):
     featureSet = freq.copy()
 
+
     for i in range(len(text_arr)-1):
         word = text_arr[i] + '-' + text_arr[i+1]
         # if word not in stopwords:
@@ -35,22 +36,24 @@ def main(text):
 
     clean_text_array = []
 
-    for i in range(len(text_arr)):
-        if text_arr[i] not in stopwords0:
-            clean_text_array.append(text_arr[i])
+    # for i in range(len(text_arr)):
+    #     if text_arr[i] not in stopwords0:
+    #         clean_text_array.append(text_arr[i])
 
     for i in range(len(clean_text_array)-1):
         word = text_arr[i] + '-' + text_arr[i+1]
         # if word not in stopwords and word not in vocab:
         if word not in vocab:
+            input("yo")
             vocab[word] = 0.0
 
-    len_vocab = len(vocab)
+    print("Length of vocab:",len(vocab))
 
-    featureSet1 = text_to_frequencies(text, vocab)
+    featureSet1 = text_to_frequencies(text_arr, vocab)
     n1 = sum(featureSet1.values())
 
     # newA = dict(Counter(featureSet4).most_common(30))
     # print(newA.keys())
 
     print(n1)
+

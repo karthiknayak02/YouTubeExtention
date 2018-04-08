@@ -85,7 +85,28 @@ for (i = 0; i < 10; i++) {
 // var firstScriptTag = document.getElementsByTagName('script')[0];
 // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+var request = new XMLHttpRequest();
 
+request.open('GET', 'http://127.0.0.1:5000/todo/api/v1.0/tasks/1', true);
+request.onload = function () {
+
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response);
+
+  if (request.status >= 200 && request.status < 400) {
+  	console.log(data)
+  	console.log(data.task.description)
+  } else {
+    console.log('error');
+  }
+}
+
+request.send();
+
+// data.forEach(movie => {
+//   // Log each movie's title
+//   console.log(movie.title);
+// });
 
 // {
 // 	"3.3"	: "I’ve had my ups and downs",

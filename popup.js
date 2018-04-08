@@ -38,13 +38,13 @@ var search_string ="";
 function get_search_string() {
     search_string = document.getElementById("searchbox").value;
  
-    var obj = {"search": search_string};
+    var obj = {"url": url, "search": search_string};
     var jsonString= JSON.stringify(obj);
     console.log(jsonString);
  
     // send server the search string !!!
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:5000/todo/api/v1.0/tasks', true);
+    xhr.open("POST", 'http://localhost:5000/todo/api/v1.0/tasks/2', true);
  
     // Send the proper header information along with the request
     xhr.setRequestHeader("Content-type", "application/JSON");
@@ -55,6 +55,8 @@ function get_search_string() {
         }
     }
     xhr.send(jsonString);
+
+    generate();
  
 }
  
@@ -122,34 +124,34 @@ function seekVideo(tabid){
 // var firstScriptTag = document.getElementsByTagName('script')[0];
 // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
  
-// function generate() {
-//     // var request = new XMLHttpRequest();
+function generate() {
+    var request = new XMLHttpRequest();
  
-//     // request.open('GET', 'http://127.0.0.1:5000/todo/api/v1.0/tasks/1', true);
-//     // request.onload = function () {
+    request.open('GET', 'http://127.0.0.1:5000/todo/api/v1.0/tasks/3', true);
+    request.onload = function () {
  
-//     //   // Begin accessing JSON data here
-//     //   var data = JSON.parse(this.response);
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
  
-//     //   if (request.status >= 200 && request.status < 400) {
-//     //     console.log(data)
-//     //     console.log(data.task)
-//     //     var p = data;
+      if (request.status >= 200 && request.status < 400) {
+        console.log(data)
+        console.log(data.task)
+        var p = data;
  
-//     //     for (var key in p) {
-//     //     if (p.hasOwnProperty(key)) {
-//     //         console.log(key + " -> " + p[key]);
-//     //         add(key, p[key]);
-//     //     }
-//     // }
-//     //   } else {
-//     //     console.log('error');
-//     //   }
-//     // }
+        for (var key in p) {
+        if (p.hasOwnProperty(key)) {
+            console.log(key + " -> " + p[key]);
+            add(key.toString().split(":")[0], p[key]);
+        }
+    }
+      } else {
+        console.log('error');
+      }
+    }
  
-//     // request.send();
+    request.send();
  
-// }
+}
  
 // document.getElementById('gen').onclick = generate
 
@@ -169,7 +171,7 @@ function seekVideo(tabid){
         for (var key in p) {
         if (p.hasOwnProperty(key)) {
             console.log(key + " -> " + p[key]);
-            add(key, p[key]);
+            add(key.toString().split(":")[0], p[key]);
         }
     }
       } else {

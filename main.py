@@ -4,7 +4,9 @@ import html
 import spacy
 import time
 from pprint import pprint
+import numpy as np
 from collections import Counter
+from tqdm import tqdm
 
 stop_words = {'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't",
               'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
@@ -57,19 +59,38 @@ def parse_xml(body):
 
 
 def stop_word_removal(words):
-    [words.remove(word) for word in words[:] if word in stop_words]
+    [words.remove(word) for word in words[:] if word.lower() in stop_words]
     return words
 
 
-def top_bigrams(words, ngrams, count):
+def top_bigrams(nlp, words, ngrams, count):
+    weights = {'VERB': 0.6, 'PROPN': 0.8, 'NOUN': 0.3, 'ADP': 0.1, 'ADJ': 0.1}
+    pprint(weights)
     bi_list = []
     for i in range(len(words) - ngrams + 1):
         together = ""
         for j in range(ngrams):
             together += words[i+j] + " "
         bi_list.append(together[:-1])
-    return Counter(bi_list).most_common(count)
 
+    start_time = time.time()
+    n_gram_frequencies = Counter(bi_list)
+    for word in tqdm(n_gram_frequencies.keys()):
+        tokens = nlp(word)
+        n_gram_weight = 0.00001
+        for single_token in tokens:
+            pos_tag = single_token.pos_
+            if pos_tag in weights:
+                n_gram_weight += weights[pos_tag]
+
+        n_gram_frequencies[word] *= n_gram_weight
+        # print(word, freq)
+        # input("buttttttttt")
+
+
+    top_words =  n_gram_frequencies.most_common(count)
+    print("ngram weight time:", time.time() - start_time)
+    return top_words
 
 def get_transcripts(transcript_url):
     response = requests.get(transcript_url)
@@ -108,13 +129,12 @@ def search_word(searchable):
 
 
 
-
 def main():
 
     # SpaCy model loading <---------------- currently not using
-    # start = time.time()
-    # nlp = spacy.load("en")
-    # print("Model Load time:", start - time.time())
+    start = time.time()
+    nlp = spacy.load("en")
+    print("Model Load time:", time.time() - start)
 
     noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
     works = ["https://www.youtube.com/watch?v=TUgBd-yK7-4",
@@ -126,8 +146,21 @@ def main():
                  "https://www.youtube.com/watch?v=t8R_GKS-M2Y",
                  "https://www.youtube.com/watch?v=JrRRvqgYgT0",
                  "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
+    txt_files = ["timedtext0.xml",
+                 "timedtext1.xml",
+                 "timedtext2.xml",
+                 "timedtext3.xml",
+                 "timedtext4.xml",
+                 "timedtext5.xml",
+                 "timedtext6.xml",
+                 "timedtext7.xml",
+                 "timedtext8.xml",
+                 "timedtext9.xml",
+                 "timedtext10.xml",
+                 "timedtext11.xml",
+                 "timedtext12.xml"]
 
-    for link in works:
+    for link in txt_files:
         n_start = time.time()
 
         # # Takes in a youtube video link and generates a url link for the transcript api we are using.
@@ -138,14 +171,15 @@ def main():
         # # Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
         # parsed_transcript = get_transcripts(transcript_url)
 
-        with open("timedtext.xml") as file:
+        with open(link) as file:
+            print("OPERATING ON:", link)
             text = file.read()
             parsed_transcript = parse_xml(text)
 
             # Iterates through all lines in the video and makes a bag of words.
             words = []
             for line in parsed_transcript:
-                new = line[-1].replace(".", "").replace(",", "").replace(":", "").replace("\n", " ").replace("?", "")
+                new = line[-1].replace(".", "").replace(",", "").replace(":", "").replace("\n", " ").replace("?", " ").replace("!", " ").replace("\"", "").replace("’", "'")
                 # print(new)
                 line[-1] = new
                 words += line[-1].split()
@@ -154,7 +188,7 @@ def main():
             # Keyword extractor. <------- Currently only removes stopwords and punctuation.
             clean_words = stop_word_removal(words)
 
-            [print(i) for i in top_bigrams(clean_words, 2, 10)]
+            [print(i) for i in top_bigrams(nlp, clean_words, 2, 10)]
 
             searchable = search_prep(parsed_transcript)
 
@@ -169,3 +203,26 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # unique_words, word_counts = np.unique(bi_list, return_counts=True)
+    # freq_matrix = np.array((unique_words, word_counts)).T
+    # print(freq_matrix)
+    # start_time = time.time()
+    # for single_freq in freq_matrix:
+    #     tokens = nlp(str(single_freq[0]))
+    #     n_gram_weight = 0.00001
+    #     for single_token in tokens:
+    #         if single_token.pos_ in weights:
+    #             word_weight = weights[single_token.pos_]
+    #         else:
+    #             word_weight = weights['rest']
+    #         # try:
+    #         #     word_weight = weights[single_token.pos_]
+    #         # except KeyError:
+    #         #     word_weight = weights['rest']
+    #         n_gram_weight += word_weight
+    #     #print(n_gram_weight)
+    #     single_freq[1] = int(single_freq[1]) * n_gram_weight
+    # freq_matrix.sort(axis=1)
+    # print("Ngram weight scoring:", time.time() - start_time )
+    # input("hi")
+    # n_gram_frequencies = Counter({freq[0]: freq[1] for freq in freq_matrix})

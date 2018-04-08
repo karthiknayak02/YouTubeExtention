@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" ?><transcript><text start="0" dur="0.93"></text><text start="0.93" dur="2">Let&amp;#39;s imagine that instead of
+having two charges, we just</text><text start="2.93" dur="2.28">have one charge by itself,
+sitting in a</text><text start="5.21" dur="2">vacuum, sitting in space.</text><text start="7.21" dur="5.44">So that&amp;#39;s this charge here, and
+let&amp;#39;s say its charge is Q.</text><text start="12.65" dur="2.3">That&amp;#39;s some number,
+whatever it is.</text><text start="14.95" dur="1.44">That&amp;#39;s it&amp;#39;s charge.</text><text start="16.39" dur="5.46">And I want to know, if I were to
+place another charge close</text><text start="21.85" dur="4.87">to this Q, within its sphere of
+influence, what&amp;#39;s going to</text><text start="26.72" dur="1.16">happen to that other charge?</text><text start="27.88" dur="2.94">What&amp;#39;s going to be the
+net impact on it?</text><text start="30.82" dur="2.72">And we know if this has some
+charge, if we put another</text><text start="33.54" dur="3.59">charge here, if this is 1
+coulomb and we put another</text><text start="37.13" dur="3.59">charge here that&amp;#39;s 1 coulomb,
+that they&amp;#39;re both positive,</text><text start="40.72" dur="1.83">they&amp;#39;re going to repel each
+other, so there will be some</text><text start="42.55" dur="2.76">force that pushes the
+next charge away.</text><text start="45.31" dur="2.61">If it&amp;#39;s a negative charge and I
+put it here, it&amp;#39;ll be even a</text><text start="47.92" dur="2.66">stronger force that pulls it
+in because it&amp;#39;ll be closer.</text><text start="50.58" dur="2.97">So in general, there&amp;#39;s this
+notion of what we can call an</text><text start="53.55" dur="2.52">electric field around
+this charge.</text><text start="56.07" dur="1.25">And what&amp;#39;s an electric field?</text><text start="57.32" dur="2.64"></text><text start="59.96" dur="4.059">We can debate whether it really
+exists, but what it</text><text start="64.019" dur="5.861">allows us to do is imagine that
+somehow this charge is</text><text start="69.88" dur="3.4">affecting the space around it
+in some way that whenever I</text><text start="73.28" dur="3.19">put-- it&amp;#39;s creating a field that
+whenever I put another</text><text start="76.47" dur="3.06">charge in that field, I can
+predict how the field will</text><text start="79.53" dur="1.1">affect that charge.</text><text start="80.63" dur="2.72">So let&amp;#39;s put it in a little more
+quantitative term so I</text><text start="83.35" dur="1.64">stop confusing you.</text><text start="84.99" dur="5.355">So Coulomb&amp;#39;s Law told us that
+the force between two charges</text><text start="90.345" dur="3.6">is going to be equal to
+Coulomb&amp;#39;s constant times-- and</text><text start="93.945" dur="3.145">in this case, the first
+charge is big Q.</text><text start="97.09" dur="2.8">And let&amp;#39;s say that the second
+notional charge that I</text><text start="99.89" dur="3.28">eventually put in this field
+is small q, and then you</text><text start="103.17" dur="1.43">divide by the distance
+between them.</text><text start="104.6" dur="3.21">Sometimes it&amp;#39;s called r because
+you can kind of view</text><text start="107.81" dur="1.53">the distance as the
+radial distance</text><text start="109.34" dur="0.96">between the two charges.</text><text start="110.3" dur="2.05">So sometimes it says r squared,
+but it&amp;#39;s the distance</text><text start="112.35" dur="1.56">between them.</text><text start="113.91" dur="2.98">So what we want to do if we want
+to calculate the field,</text><text start="116.89" dur="3.37">we want to figure out how much
+force is there placed per</text><text start="120.26" dur="3.45">charge at any point around this
+Q, so, say, at a given</text><text start="123.71" dur="1.75">distance out here.</text><text start="125.46" dur="3.61">At this distance, we want to
+know, for a given Q, what is</text><text start="129.07" dur="1.39">the force going to be?</text><text start="130.46" dur="1.93">So what we can do is we could
+take this equation up here and</text><text start="132.39" dur="2.5">divide both sides by this small
+1, and say, OK, the</text><text start="134.89" dur="3.58">force-- and I will arbitrarily
+switch colors.</text><text start="138.47" dur="8.63">The force per charge at this
+point-- let&amp;#39;s call that d1--</text><text start="147.1" dur="5.01">is equal to Coulomb&amp;#39;s constant
+times the charge of the</text><text start="152.11" dur="5.33">particle that&amp;#39;s creating the
+field divided by-- well, in</text><text start="157.44" dur="3.92">this case, it&amp;#39;s d1--
+d1 squared, right?</text><text start="161.36" dur="3.92">Or we could say, in general--
+and this is the definition of</text><text start="165.28" dur="2.58">the electric field, right?</text><text start="167.86" dur="3.45">Well, this is the electric field
+at the point d1, and if</text><text start="171.31" dur="2.09">we wanted a more general
+definition of the electric</text><text start="173.4" dur="3.86">field, we&amp;#39;ll just make this a
+general variable, so instead</text><text start="177.26" dur="2.33">of having a particular distance,
+we&amp;#39;ll define the</text><text start="179.59" dur="4.28">field for all distances
+away from the point Q.</text><text start="183.87" dur="4.23">So the electric field could be
+defined as Coulomb&amp;#39;s constant</text><text start="188.1" dur="5.01">times the charge creating the
+field divided by the distance</text><text start="193.11" dur="3.1">squared, the distance we are
+away from the charge.</text><text start="196.21" dur="2.68">So essentially, we&amp;#39;ve defined--
+if you give me a</text><text start="198.89" dur="6.55">force and a point around this
+charge anywhere, I can now</text><text start="205.44" dur="1.17">tell you the exact force.</text><text start="206.61" dur="8.36">For example, if I told you that
+I have a minus 1 coulomb</text><text start="214.97" dur="8.52">charge and the distance is equal
+to-- oh, I don&amp;#39;t know.</text><text start="223.49" dur="6.12">The distance is equal to let&amp;#39;s
+say-- let&amp;#39;s make it easy.</text><text start="229.61" dur="2.1">Let&amp;#39;s say 2 meters.</text><text start="231.71" dur="3.88">So first of all, we can say,
+in general, what is the</text><text start="235.59" dur="2.78">electric field 2 meters
+away from?</text><text start="238.37" dur="2.94">So what is the electric
+field out here?</text><text start="241.31" dur="1.78">This is 2, right?</text><text start="243.09" dur="1.23">And it&amp;#39;s going to be
+2 meters away.</text><text start="244.32" dur="1.84">It&amp;#39;s radial so it&amp;#39;s actually
+along this whole circle.</text><text start="246.16" dur="1.02">What is the electric
+field there?</text><text start="247.18" dur="2.98">Well, the electric field at
+that point is going to be</text><text start="250.16" dur="1.27">equal to what?</text><text start="251.43" dur="2.15">And it&amp;#39;s also a vector
+quantity, right?</text><text start="253.58" dur="3.949">Because we&amp;#39;re dividing a vector
+quantity by a scalar</text><text start="257.529" dur="0.99">quantity charge.</text><text start="258.519" dur="3.781">So the electric field at that
+point is going to be k times</text><text start="262.3" dur="4.06">whatever charge it is divided
+by 2 meters, so divided by 2</text><text start="266.36" dur="2.82">meters squared, so that&amp;#39;s 4,
+right, distance squared.</text><text start="269.18" dur="3.18">And so if I know the electric
+field at any given point and</text><text start="272.36" dur="2.64">then I say, well, what happens
+if I put a negative 1 coulomb</text><text start="275" dur="2.78">charge there, all I have to do
+is say, well, the force is</text><text start="277.78" dur="3.82">going to be equal to the charge
+that I place there</text><text start="281.6" dur="4.31">times the electric field
+at that point, right?</text><text start="285.91" dur="3.39">So in this case, we said the
+electric field at this point</text><text start="289.3" dur="5.65">is equal to-- and the units for
+electric field are newtons</text><text start="294.95" dur="1.84">per coulomb, and that
+makes sense, right?</text><text start="296.79" dur="2.1">Because it&amp;#39;s force divided
+by charge,</text><text start="298.89" dur="1.76">so newtons per coulomb.</text><text start="300.65" dur="2.12">So if we know that the electric
+charge-- well, let me</text><text start="302.77" dur="1.11">put some real numbers here.</text><text start="303.88" dur="2.96">Let&amp;#39;s say that this
+is-- I don&amp;#39;t know.</text><text start="306.84" dur="1.942">It&amp;#39;s going to be a really large
+number, but let&amp;#39;s say</text><text start="308.782" dur="1.818">this-- let me pick
+a smaller number.</text><text start="310.6" dur="3.07">Let&amp;#39;s say this is 1
+times 10 to the</text><text start="313.67" dur="2.866">minus 6 coulombs, right?</text><text start="316.536" dur="3.474">If that&amp;#39;s 1 times 10 to the
+minus 6 coulombs, what is the</text><text start="320.01" dur="1.93">electric field at that point?</text><text start="321.94" dur="1.95">Let me switch colors again.</text><text start="323.89" dur="2.07">What&amp;#39;s the electric field
+at that point?</text><text start="325.96" dur="2.66">Well, the electric field at
+that point is going to be</text><text start="328.62" dur="4.55">equal to Coulomb&amp;#39;s constant,
+which is 9 times 10 to the</text><text start="333.17" dur="4.74">ninth-- times the charge
+generating the field-- times 1</text><text start="337.91" dur="4.28">times 10 to the minus
+6 coulombs.</text><text start="342.19" dur="3.79">And then we are 2 meters
+away, so 2 squared.</text><text start="345.98" dur="5.475">So that equals 9 times 10 to
+the third divided by 4.</text><text start="351.455" dur="1.085">So I don&amp;#39;t know, what is that?</text><text start="352.54" dur="8.43">2.5 times 10 to the third or
+2,500 newtons per coulomb.</text><text start="360.97" dur="2.69">So we know that this is
+generating a field that when</text><text start="363.66" dur="3.77">we&amp;#39;re 2 meters away, at a radius
+of 2 meters, so roughly</text><text start="367.43" dur="4.37">that circle around it, this is
+generating a field that if I</text><text start="371.8" dur="3.5">were to put-- let&amp;#39;s say I were
+to place a 1 coulomb charge</text><text start="375.3" dur="5.56">here, the force exerted on that
+1 coulomb charge is going</text><text start="380.86" dur="5.02">to be equal to 1 coulomb times
+the electric fields, times</text><text start="385.88" dur="3.74">2,500 newtons per coulomb.</text><text start="389.62" dur="2.59">So the coulombs cancel out, and
+you&amp;#39;ll have 2,500 newtons,</text><text start="392.21" dur="2.88">which is a lot, and that&amp;#39;s
+because 1 coulomb is a very,</text><text start="395.09" dur="1.93">very large charge.</text><text start="397.02" dur="3.96">And then a question you should
+ask yourself: If this is 1</text><text start="400.98" dur="1.85">times 10 to the negative 6
+coulombs and this is 1</text><text start="402.83" dur="4.29">coulomb, in which direction
+will the force be?</text><text start="407.12" dur="2.03">Well, they&amp;#39;re both positive,
+so the force is going to be</text><text start="409.15" dur="2.72">outwards, right?</text><text start="411.87" dur="4.17">So let&amp;#39;s take this notion and
+see if we can somehow draw an</text><text start="416.04" dur="2.45">electric field around a
+particle, just to get an</text><text start="418.49" dur="3.38">intuition of what happens when
+we later put a charge anywhere</text><text start="421.87" dur="1.25">near the particle.</text><text start="423.12" dur="3.6"></text><text start="426.72" dur="3.72">So there&amp;#39;s a couple of ways to
+visualize an electric field.</text><text start="430.44" dur="2.89">One way to visualize it is if I
+have a-- let&amp;#39;s say I have a</text><text start="433.33" dur="2.31">point charge here Q.</text><text start="435.64" dur="5.18">What would be the path of a
+positive charge if I placed it</text><text start="440.82" dur="2.24">someplace on this Q?</text><text start="443.06" dur="4.94">Well, if I put a positive charge
+here and this Q is</text><text start="448" dur="2.6">positive, that positive charge
+is just going to accelerate</text><text start="450.6" dur="0.77">outward, right?</text><text start="451.37" dur="3.52">It&amp;#39;s just going to go straight
+out, but it&amp;#39;s going to</text><text start="454.89" dur="1.92">accelerate at an ever-slowing
+rate, right?</text><text start="456.81" dur="2.34">Because here, when you&amp;#39;re really
+close, the outward</text><text start="459.15" dur="2.88">force is very strong, and then
+as you get further and further</text><text start="462.03" dur="4.26">away, the electrostatic force
+from this charge becomes</text><text start="466.29" dur="2.88">weaker and weaker, or you could
+say the field becomes</text><text start="469.17" dur="0.83">weaker and weaker.</text><text start="470" dur="3.66">But that&amp;#39;s the path of a--
+it&amp;#39;ll just be radially</text><text start="473.66" dur="2.75">outward-- of a positive
+test charge.</text><text start="476.41" dur="1.73">And then if I put it here, well,
+it would be radially</text><text start="478.14" dur="1.44">outward that way.</text><text start="479.58" dur="1.08">It wouldn&amp;#39;t curve the
+way I drew it.</text><text start="480.66" dur="0.96">It would be a straight line.</text><text start="481.62" dur="1.54">I should actually use
+the line tool.</text><text start="483.16" dur="3.03">If I did it here, it would be
+like that, but then I can&amp;#39;t</text><text start="486.19" dur="1.84">draw the arrows.</text><text start="488.03" dur="3.17">If I was here, it would
+out like that.</text><text start="491.2" dur="2.5">I think you get the picture.</text><text start="493.7" dur="4.19">At any point, a positive test
+charge would just go straight</text><text start="497.89" dur="3.25">out away from our charge Q.</text><text start="501.14" dur="2.41">And to some degree, one measure
+of-- and these are</text><text start="503.55" dur="1.69">called electric field lines.</text><text start="505.24" dur="4.46">And one measure of how strong
+the field is, is if you</text><text start="509.7" dur="7.42">actually took a unit area
+and you saw how dense</text><text start="517.12" dur="0.84">the field lines are.</text><text start="517.96" dur="4.36">So here, they&amp;#39;re relatively
+sparse, while if I did that</text><text start="522.32" dur="4.43">same area up here-- I know
+it&amp;#39;s not that obvious.</text><text start="526.75" dur="2.16">I&amp;#39;m getting more
+field lines in.</text><text start="528.91" dur="1.31">But actually, that&amp;#39;s not a good
+way to view it because</text><text start="530.22" dur="1.4">I&amp;#39;m covering so much area.</text><text start="531.62" dur="3.2">Let me undo both of them.</text><text start="534.82" dur="2.65">You can imagine if I had a lot
+more lines, if I did this</text><text start="537.47" dur="2.41">area, for example, in that area,
+I&amp;#39;m capturing two of</text><text start="539.88" dur="0.92">these field lines.</text><text start="540.8" dur="3.61">Well, if I did that exact same
+area out here, I&amp;#39;m only</text><text start="544.41" dur="2.66">capturing one of the field
+lines, although you could have</text><text start="547.07" dur="1.39">a bunch more in between here.</text><text start="548.46" dur="1.34">And that makes sense, right?</text><text start="549.8" dur="5.67">Because as you get closer and
+closer to the source of the</text><text start="555.47" dur="1.91">electric field, the charge
+gets stronger.</text><text start="557.38" dur="1.525">Another way that you could have
+done this, and this would</text><text start="558.905" dur="4.415">have actually more clearly shown
+the magnitude of the</text><text start="563.32" dur="3.726">field at any point, is you could
+have-- you could say,</text><text start="567.046" dur="3.424">OK, if that&amp;#39;s my charge Q, you
+could say, well, really close,</text><text start="570.47" dur="0.83">the field is strong.</text><text start="571.3" dur="4.14">So at this point, the vector,
+the newtons per coulomb, is</text><text start="575.44" dur="5.99">that strong, that strong, that
+strong, that strong.</text><text start="581.43" dur="1.2">We&amp;#39;re just taking
+sample points.</text><text start="582.63" dur="3.73">You can&amp;#39;t possibly draw them
+at every single point.</text><text start="586.36" dur="2.32">So at that point, that&amp;#39;s
+the vector.</text><text start="588.68" dur="1.74">That&amp;#39;s the electric
+field vector.</text><text start="590.42" dur="1.9">But then if we go a little bit
+further out, the vector is</text><text start="592.32" dur="3.77">going to be-- it falls off.</text><text start="596.09" dur="1.68">This one should be shorter, then
+this one should be even</text><text start="597.77" dur="1.74">shorter, right?</text><text start="599.51" dur="2.48">You could pick any point and you
+could actually calculate</text><text start="601.99" dur="2.38">the electric field vector, and
+the further you go out, the</text><text start="604.37" dur="3.76">shorter and shorter the electric
+field vectors get.</text><text start="608.13" dur="3.21">And so, in general, there&amp;#39;s all
+sorts of things you can</text><text start="611.34" dur="2.9">draw the electric fields for.</text><text start="614.24" dur="3.32">Let&amp;#39;s say that this is a
+positive charge and that this</text><text start="617.56" dur="1.08">is a negative charge.</text><text start="618.64" dur="2.37">Let me switch colors so I don&amp;#39;t
+have to erase things.</text><text start="621.01" dur="3.73">If I have to draw the path of
+a positive test charge, it</text><text start="624.74" dur="4.75">would go out radially from
+this charge, right?</text><text start="629.49" dur="2.86">But then as it goes out, it&amp;#39;ll
+start being attracted to this</text><text start="632.35" dur="3.47">one the closer it gets to the
+negative, and then it&amp;#39;ll curve</text><text start="635.82" dur="4.9">in to the negative charge and
+these arrows go like this.</text><text start="640.72" dur="2.86">And if I went from here, the
+positive one will be repelled</text><text start="643.58" dur="3.56">really strong, really strong,
+it&amp;#39;ll accelerate fast and it&amp;#39;s</text><text start="647.14" dur="2.09">rate of acceleration will slow
+down, but then as it gets</text><text start="649.23" dur="2.64">closer to the negative one,
+it&amp;#39;ll speed up again, and then</text><text start="651.87" dur="0.99">that would be its path.</text><text start="652.86" dur="2.4">Similarly, if there was a
+positive test charge here, its</text><text start="655.26" dur="4.17">path would be like
+that, right?</text><text start="659.43" dur="3.17">If it was here, its path
+would be like that.</text><text start="662.6" dur="3.104">If it was here, it&amp;#39;s path
+would be like that.</text><text start="665.704" dur="4.096">If it was there, maybe its path
+is like that, and at some</text><text start="669.8" dur="5.18">point, its path might never get
+to that-- this out here</text><text start="674.98" dur="1.46">might just go straight
+out that way.</text><text start="676.44" dur="2.69"></text><text start="679.13" dur="2">That one would just go straight
+out, and here, the</text><text start="681.13" dur="1.42">field lines would just
+come in, right?</text><text start="682.55" dur="2.4">A positive test charge would
+just be naturally attracted to</text><text start="684.95" dur="1.52">that negative charge.</text><text start="686.47" dur="3.02">So that&amp;#39;s, in general, what
+electric field lines show, and</text><text start="689.49" dur="4.08">we could use our little area
+method and see that over here,</text><text start="693.57" dur="3.4">if we picked a given area, the
+electric field is much weaker</text><text start="696.97" dur="1.61">than if we picked that
+same area right here.</text><text start="698.58" dur="3.54">We&amp;#39;re getting more field lines
+in than we do right there.</text><text start="702.12" dur="1.53">So that hopefully gives you
+a little sense for what an</text><text start="703.65" dur="1.17">electric field is.</text><text start="704.82" dur="3.1">It&amp;#39;s really just a way of
+visualizing what the impact</text><text start="707.92" dur="1.89">would be on a test charge
+if you bring it</text><text start="709.81" dur="1.2">close to another charge.</text><text start="711.01" dur="1.56">And hopefully, you
+know a little bit</text><text start="712.57" dur="1.48">about Coulomb&amp;#39;s constant.</text><text start="714.05" dur="2.23">And let&amp;#39;s just do a very
+simple-- I&amp;#39;m getting this out</text><text start="716.28" dur="3.71">of the AP Physics book, but they
+say-- let&amp;#39;s do a little</text><text start="719.99" dur="3.15">simple problem: Calculate the
+static electric force between</text><text start="723.14" dur="4.71">a 6 times 10 to the negative
+sixth coulomb charge.</text><text start="727.85" dur="5.1">So 6 times-- oh, no, that&amp;#39;s
+not on an electric field.</text><text start="732.95" dur="3.12">Oh, here it says: What is the
+force acting on an electron</text><text start="736.07" dur="5.22">placed in an external electric
+field where the electric field</text><text start="741.29" dur="6.04">is-- they&amp;#39;re saying it is 100
+newtons per coulomb at that</text><text start="747.33" dur="1.8">point, wherever the
+electron is.</text><text start="749.13" dur="3.12">So the force on that, the force
+in general, is just</text><text start="752.25" dur="3.93">going to be the charge times the
+electric field, and they</text><text start="756.18" dur="1.08">say it&amp;#39;s an electron,
+so what&amp;#39;s the</text><text start="757.26" dur="0.69">charge of an electron?</text><text start="757.95" dur="2.62">Well, we know it&amp;#39;s negative, and
+then in the first video,</text><text start="760.57" dur="5.29">we learned that its charge is
+1.6 times 10 to the negative</text><text start="765.86" dur="8.8">nineteenth coulombs times
+100 newtons per coulomb.</text><text start="774.66" dur="1.54">The coulombs cancel out.</text><text start="776.2" dur="2.4">And this is 10 squared, right?</text><text start="778.6" dur="4.64">This is 10 to the positive 2, so
+it&amp;#39;ll be 10 to the minus 19</text><text start="783.24" dur="1.92">times 10 to the positive 2.</text><text start="785.16" dur="5.49">The force will be minus
+1.6 times 10 to</text><text start="790.65" dur="2.19">the minus 17 newtons.</text><text start="792.84" dur="1.31">So the problems are
+pretty simple.</text><text start="794.15" dur="1.802">I think the more important thing
+with electric fields is</text><text start="795.952" dur="3.038">to really understand intuitively
+what&amp;#39;s going on,</text><text start="798.99" dur="4.54">and kind of how it&amp;#39;s stronger
+near the point charges, and</text><text start="803.53" dur="2.55">how it gets weaker as it goes
+away, and what the field lines</text><text start="806.08" dur="2.63">depict, and how they can be used
+to at least approximate</text><text start="808.71" dur="1.28">the strength of the field.</text><text start="809.99" dur="2.24">I will see you in
+the next video.</text></transcript>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?><transcript><text start="12.76" dur="3.456">Like every passionate
+software engineer out there,</text><text start="16.24" dur="3.336">I closely follow technology
+companies in Silicon Valley,</text><text start="19.6" dur="3.12">pretty much the same way soccer fans
+follow their teams in Europe.</text><text start="23.64" dur="2.216">I read articles on tech blogs</text><text start="25.88" dur="2.12">and listen to podcasts on my phone.</text><text start="29.08" dur="1.816">But after I finish the article,</text><text start="30.92" dur="3.336">lock my phone and unplug the headphones,</text><text start="34.28" dur="2.216">I&amp;#39;m back in sub-Saharan Africa,</text><text start="36.52" dur="2.44">where the landscape is not quite the same.</text><text start="40.16" dur="2.64">We have long and frequent power outages,</text><text start="43.72" dur="2.056">low penetration of computers,</text><text start="45.8" dur="1.936">slow internet connections</text><text start="47.76" dur="4.256">and a lot of patients
+visiting understaffed hospitals.</text><text start="52.04" dur="2.136">Since the HIV epidemic,</text><text start="54.2" dur="5.656">hospitals have been struggling
+to manage regular HIV treatment records</text><text start="59.88" dur="1.84">for increasing volumes of patients.</text><text start="62.72" dur="1.736">For such environments,</text><text start="64.48" dur="3.896">importing technology systems
+developed elsewhere has not worked,</text><text start="68.4" dur="3.216">but in 2006, I joined Baobab Health,</text><text start="71.64" dur="3.536">a team that uses locally based engineers</text><text start="75.2" dur="2.616">to develop suitable interventions</text><text start="77.84" dur="3.856">that are addressing
+health care challenges in Malawi.</text><text start="81.72" dur="3.416">We designed an electronic
+health record system</text><text start="85.16" dur="3.336">that is used by health care workers
+while seeing patients.</text><text start="88.52" dur="4.576">And in the process we realized that we
+not only had to design the software,</text><text start="93.12" dur="2.36">we had to implement
+the infrastructure as well.</text><text start="96.64" dur="2.216">We don&amp;#39;t have enough medical staff</text><text start="98.88" dur="2.856">to comprehensively examine every patient,</text><text start="101.76" dur="3.056">so we embedded clinical guidelines
+within the software</text><text start="104.84" dur="2.176">to guide nurses and clerks</text><text start="107.04" dur="2.16">who assist with handling
+some of the workload.</text><text start="110" dur="1.656">Everyone has a birthday,</text><text start="111.68" dur="2.496">but not everyone knows their birthday,</text><text start="114.2" dur="3.816">so we wrote algorithms
+to handle estimated birthdates</text><text start="118.04" dur="1.28">as complete dates.</text><text start="120.2" dur="3.936">How do we follow up
+patients living in slums</text><text start="124.16" dur="2.2">with no street and house numbers?</text><text start="127.2" dur="3.88">We used landmarks to approximate
+their physical addresses.</text><text start="132.04" dur="3.44">Malawi had no IDs
+to uniquely identify patients,</text><text start="136.48" dur="3.136">so we had to implement unique patient IDs</text><text start="139.64" dur="2.24">to link patient records across clinics.</text><text start="142.919" dur="2.441">The IDs are printed as barcodes</text><text start="146.2" dur="2.856">on labels that are stuck
+on personal health booklets</text><text start="149.08" dur="1.2">kept by each patient.</text><text start="151" dur="1.976">With this barcoded ID,</text><text start="153" dur="2.416">a simple scan with a barcode reader</text><text start="155.44" dur="2.24">quickly pulls up the patient&amp;#39;s records.</text><text start="158.44" dur="2.296">No need to rewrite their personal details</text><text start="160.76" dur="2.416">on paper registers at every visit.</text><text start="163.2" dur="2.656">And suddenly, queues became shorter.</text><text start="165.88" dur="4.896">This meant patients, typically mothers
+with little children on their backs,</text><text start="170.8" dur="3.136">had to spend less time
+waiting to be assisted.</text><text start="173.96" dur="1.936">And if they lose their booklets,</text><text start="175.92" dur="3.176">their records can still be pulled
+by searching with their names.</text><text start="179.12" dur="4.72">Now, the way we pronounce
+and spell names varies tremendously.</text><text start="184.36" dur="2.28">We freely mix R&amp;#39;s and L&amp;#39;s,</text><text start="187.08" dur="2.84">English and vernacular
+versions of their names.</text><text start="190.68" dur="1.416">Even soundex,</text><text start="192.12" dur="4.416">a standard method for grouping words
+by how similar they sound,</text><text start="196.56" dur="1.576">was not good enough.</text><text start="198.16" dur="1.696">So we had to modify it</text><text start="199.88" dur="3.8">to help us link and match
+existing records.</text><text start="206.16" dur="1.2">Before the iPhone,</text><text start="208.04" dur="3.816">software engineers
+developed for personal computers,</text><text start="211.88" dur="1.256">but from our experience,</text><text start="213.16" dur="3.376">we knew our power system
+is not reliable enough</text><text start="216.56" dur="1.28">for personal computers.</text><text start="218.48" dur="4.656">So we repurposed touch screen
+point-of-sale terminals</text><text start="223.16" dur="1.696">that are meant for retail shops</text><text start="224.88" dur="1.76">to become clinical workstations.</text><text start="227.92" dur="4.16">At the time, we imported
+internet appliances called i-Openers</text><text start="232.96" dur="3.016">that were manufactured
+during the dot-com era</text><text start="236" dur="1.84">by a failed US company.</text><text start="239.08" dur="2.296">We modified their screens</text><text start="241.4" dur="1.376">to add touch sensors</text><text start="242.8" dur="3.32">and their power system
+to run from rechargeable batteries.</text><text start="246.68" dur="5.136">When we started, we didn&amp;#39;t find
+a reliable network to transmit data,</text><text start="251.84" dur="1.64">especially from rural hospitals.</text><text start="254.24" dur="2.72">So we built our own towers,</text><text start="257.72" dur="1.896">created a wireless network</text><text start="259.64" dur="2.416">and linked clinics in Lilongwe,</text><text start="262.08" dur="1.2">Malawi&amp;#39;s capital.</text><text start="264.6" dur="2.88">(Applause)</text><text start="269.6" dur="1.6">With a team of engineers</text><text start="272.2" dur="2.296">working within a hospital campus,</text><text start="274.52" dur="2.656">we observed health care workers
+use the system</text><text start="277.2" dur="3.216">and iteratively
+build an information system</text><text start="280.44" dur="3.816">that is now managing HIV records</text><text start="284.28" dur="3.616">in all major public hospitals in Malawi.</text><text start="287.92" dur="5.2">These are hospitals serving
+over 2,000 HIV patients, each clinic.</text><text start="294.68" dur="2.856">Now, health care workers
+who used to spend days</text><text start="297.56" dur="2.136">to tally and prepare quarterly reports</text><text start="299.72" dur="2.24">are producing the same reports
+within minutes,</text><text start="302.96" dur="3.856">and health care experts
+from all over the world</text><text start="306.84" dur="3.04">are now coming to Malawi
+to learn how we did it.</text><text start="310.88" dur="3.456">(Applause)</text><text start="314.36" dur="2.576">It is inspiring and fun</text><text start="316.96" dur="2.816">to follow technology trends
+across the globe,</text><text start="319.8" dur="2.096">but to make them work</text><text start="321.92" dur="2.176">in low-resourced environments</text><text start="324.12" dur="3.176">like public hospitals
+in sub-Saharan Africa,</text><text start="327.32" dur="3.776">we have had to become jacks-of-all-trades</text><text start="331.12" dur="3.536">and build whole systems,
+including the infrastructure,</text><text start="334.68" dur="1.24">from the ground up.</text><text start="336.56" dur="1.216">Thank you.</text><text start="337.8" dur="5">(Applause)</text></transcript>

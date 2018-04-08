@@ -5,13 +5,15 @@
 
 
     "permissions": [
-    	"tabs", 
-    	"activeTab", 
-    	"declarativeContent",
-    	"storage",
-    	"*://*.youtube.com/*", 
-    	"http://127.0.0.1:5000/*",
-    	"http://localhost/*"
+      "tabs", 
+      "activeTab", 
+      "declarativeContent",
+      "storage",
+      "*://*.youtube.com/*", 
+      "http://127.0.0.1:5000/*",
+      "http://localhost/*",
+      "http://video.google.com/*",
+      "http://api.meaningcloud.com/*"
     ],
 
 	// "content_security_policy":"script-src 'self' https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js; object-src 'self'",

@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import html
 import spacy
 import time
+from pprint import pprint
 from collections import Counter
 
 stop_words = {'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't",
@@ -60,11 +61,13 @@ def stop_word_removal(words):
     return words
 
 
-def top_bigrams(words, count):
+def top_bigrams(words, ngrams, count):
     bi_list = []
-    offset = 1
-    for i in range(len(words) - offset):
-        bi_list.append(words[i] + " " + words[i + offset])
+    for i in range(len(words) - ngrams + 1):
+        together = ""
+        for j in range(ngrams):
+            together += words[i+j] + " "
+        bi_list.append(together[:-1])
     return Counter(bi_list).most_common(count)
 
 
@@ -79,6 +82,31 @@ def get_transcripts(transcript_url):
             print("This link has no text in it.")
     else:
         print("response code error: ", response.status_code)
+
+
+def search_prep(parse):
+    search_ready = []
+    for each in parse:
+        single = []
+        for i in range(len(each) -1):
+            single.append(each[i])
+        dick = {}
+        for word in each[len(each)-1].split():
+            if word.lower() in dick:
+                dick[word.lower()] += 1
+            else:
+                dick[word.lower()] = 1
+        single.append(dick)
+        search_ready.append(single)
+    # pprint(search_ready)
+
+
+def search_word(searchable):
+    contains = []
+    # for line in searchable:
+    #     for word in line[-1]:
+
+
 
 
 def main():
@@ -117,12 +145,18 @@ def main():
             # Iterates through all lines in the video and makes a bag of words.
             words = []
             for line in parsed_transcript:
+                new = line[-1].replace(".", "").replace(",", "").replace(":", "").replace("\n", " ").replace("?", "")
+                # print(new)
+                line[-1] = new
                 words += line[-1].split()
-
+            # print(words)
+            # pprint(parsed_transcript)
             # Keyword extractor. <------- Currently only removes stopwords and punctuation.
             clean_words = stop_word_removal(words)
 
-            [print(i) for i in top_bigrams(clean_words, count=10)]
+            [print(i) for i in top_bigrams(clean_words, 2, 10)]
+
+            searchable = search_prep(parsed_transcript)
 
             print("Time: ", time.time() - n_start)
 

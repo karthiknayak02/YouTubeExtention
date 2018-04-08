@@ -32,7 +32,7 @@ def not_found(error):
 def get_task():
 	yt_link = request.args.get('link')
 	print(yt_link)
-	result = re_structure.main(nlp, "normal")
+	result = re_structure.main(nlp, "no")
 	if len(result) == 0:
 		abort(404)
 	return jsonify(result)

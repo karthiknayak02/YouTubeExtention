@@ -207,14 +207,16 @@ def topics(parsed, topics):
 	# print()
 	return buttonz
 
-def for_now(fuck_this):
+def for_now(groups):
 	goddamnit = []
-	for fuck in fuck_this:
-		topic = fuck[0]
-		for each in fuck[1]:
-			new = [topic, each[0]]
-			each[0] = new
-			goddamnit.append(each)
+	for group in groups:
+		topic = group[0]
+		for each in group[1]:
+			string = topic + ": "
+			for i in range(3):
+				string += each[i][0] + "=" + str(each[i][1]) + " "
+			entry = [string[:-1], each[0][1]]
+			goddamnit.append(entry)
 	return goddamnit
 
 
@@ -235,7 +237,7 @@ def main(nlp, ret_type):
 				 "https://www.youtube.com/watch?v=t8R_GKS-M2Y",
 				 "https://www.youtube.com/watch?v=JrRRvqgYgT0",
 				 "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
-	txt_files = ["timedtext0.xml",
+	txt_files = ["timedtext12.xml",
 				 "timedtext1.xml",
 				 "timedtext2.xml",
 				 "timedtext3.xml",
@@ -246,25 +248,23 @@ def main(nlp, ret_type):
 				 "timedtext8.xml",
 				 "timedtext9.xml",
 				 "timedtext10.xml",
-				 "timedtext11.xml",
-				 "timedtext12.xml"]
+				 "timedtext0.xml",
+				 "timedtext11.xml"]
 
-	for link in works:
+	for link in txt_files:
 		n_start = time.time()
 
-		# Takes in a youtube video link and generates a url link for the transcript api we are using.
-		transcript_url = generate_url(link)
-		# If the link is successfully generated
-		if isinstance(transcript_url, str):
+		# # Takes in a youtube video link and generates a url link for the transcript api we are using.
+		# transcript_url = generate_url(link)
+		# # If the link is successfully generated
+		# if isinstance(transcript_url, str):
+		#
+		# # Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
+		# 	text = get_body(transcript_url)
 
-		# Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
-			text = get_body(transcript_url)
-
-			final_keywords = []
-
-		# with open(link) as file:
-		# 	print("OPERATING ON:", link)
-		# 	text = file.read()
+		with open(link) as file:
+			print("OPERATING ON:", link)
+			text = file.read()
 			parsed_transcript = parse_xml(text)
 
 			# Iterates through all lines in the video and makes a bag of words.
@@ -279,35 +279,35 @@ def main(nlp, ret_type):
 
 			clean_words = stop_word_removal(words)
 
-			top = top_bigrams(nlp, clean_words, 2, 10)
+			top = top_bigrams(nlp, clean_words, 2, 5)
 
 			keywords = []
 
 			for bi in top:
 				keywords.append(bi[0].split())
 
-			# print(keywords)
-
-			# print("parsed_transcript:", parsed_transcript)
-
 			normal_keywords = topics(parsed_transcript, keywords)
+			task = {}
 			if ret_type == "normal":
 				return_list = normal_keywords
+				for topic in return_list:
+					task[topic[0]] = {}
+					counter = 0
+					for cluster in topic[1]:
+						task[topic[0]][counter] = {}
+						for item in cluster:
+							task[topic[0]][counter][item[0]] = item[1]
+						counter += 1
 			else:
 				return_list = for_now(normal_keywords)
+				for item in return_list:
+					task[item[0]] = item[1]
+
+
 
 			print("Time: ", time.time() - n_start)
-			print("\n\n\n\n\n\n\n")
-			task = {}
 
-			for topic in return_list:
-				task[topic[0]] = {}
-				counter = 0
-				for cluster in topic[1]:
-					task[topic[0]][counter] = {}
-					for item in cluster:
-						task[topic[0]][counter][item[0]] = item[1]
-					counter += 1
+			pprint(task)
 
 			return task
 
@@ -318,30 +318,6 @@ def main(nlp, ret_type):
 		#     print("Failed to generate url for transcript api.")
 
 
-
 if __name__ == "__main__":
 	nlp = spacy.load("en")
-	pprint(main(nlp, ret_type="normal"))
-	# unique_words, word_counts = np.unique(bi_list, return_counts=True)
-	# freq_matrix = np.array((unique_words, word_counts)).T
-	# print(freq_matrix)
-	# start_time = time.time()
-	# for single_freq in freq_matrix:
-	#     tokens = nlp(str(single_freq[0]))
-	#     n_gram_weight = 0.00001
-	#     for single_token in tokens:
-	#         if single_token.pos_ in weights:
-	#             word_weight = weights[single_token.pos_]
-	#         else:
-	#             word_weight = weights['rest']
-	#         # try:
-	#         #     word_weight = weights[single_token.pos_]
-	#         # except KeyError:
-	#         #     word_weight = weights['rest']
-	#         n_gram_weight += word_weight
-	#     #print(n_gram_weight)
-	#     single_freq[1] = int(single_freq[1]) * n_gram_weight
-	# freq_matrix.sort(axis=1)
-	# print("Ngram weight scoring:", time.time() - start_time )
-	# input("hi")
-	# n_gram_frequencies = Counter({freq[0]: freq[1] for freq in freq_matrix})
+	pprint(main(nlp, ret_type="no"))

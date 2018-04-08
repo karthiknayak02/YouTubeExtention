@@ -5,8 +5,6 @@ import spacy
 import time
 from pprint import pprint
 from collections import Counter
-import pycurl
-from io import BytesIO
 
 stop_words = {'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't",
 			  'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
@@ -115,7 +113,7 @@ def get_transcripts(transcript_url):
 	if response.status_code == 200:
 		body = response.text
 		if body:
-			parse_xml(body)
+			return body
 		else:
 			print("This link has no text in it.")
 	else:
@@ -128,13 +126,13 @@ def search_prep(parse):
 		single = []
 		for i in range(len(each) - 1):
 			single.append(each[i])
-		dick = {}
+		prep_dict = {}
 		for word in each[len(each) - 1].split():
-			if word.lower() in dick:
-				dick[word.lower()] += 1
+			if word.lower() in prep_dict:
+				prep_dict[word.lower()] += 1
 			else:
-				dick[word.lower()] = 1
-		single.append(dick)
+				prep_dict[word.lower()] = 1
+		single.append(prep_dict)
 		search_ready.append(single)
 	return search_ready
 
@@ -201,14 +199,14 @@ def topics(parsed, topics):
 			name = [["Start", start], ["End", end], ["Instances", instances]]
 			button.append(name)
 		else:
-			print("we're fucked")
+			print("not working !!!")
 		# handle what to do if no matches
 		buttonz.append([title, button])
 	# print()
 	return buttonz
 
 def for_now(groups):
-	goddamnit = []
+	temp_list = []
 	for group in groups:
 		topic = group[0]
 		for each in group[1]:
@@ -216,11 +214,11 @@ def for_now(groups):
 			for i in range(3):
 				string += each[i][0] + "=" + str(each[i][1]) + " "
 			entry = [string[:-1], each[0][1]]
-			goddamnit.append(entry)
-	return goddamnit
+			temp_list.append(entry)
+	return temp_list
 
 
-def main(nlp, ret_type):
+def main(nlp, ret_type, link):
 
 	# # SpaCy model loading <---------------- currently not using
 	# start = time.time()
@@ -228,7 +226,8 @@ def main(nlp, ret_type):
 	# print("Model Load time:", time.time() - start)
 
 	noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
-	works = ["https://www.youtube.com/watch?v=TUgBd-yK7-4",
+	works = ["https://www.youtube.com/watch?v=2GQTfpDE9DQ",
+				 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
 				 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
 				 "https://www.youtube.com/watch?v=b4k-KPELNcc",
 				 "https://www.youtube.com/watch?v=8UhqkX2VAmo",
@@ -251,67 +250,65 @@ def main(nlp, ret_type):
 				 "timedtext0.xml",
 				 "timedtext11.xml"]
 
-	for link in works:
-		n_start = time.time()
+	# for link in works:
+	n_start = time.time()
 
-		# Takes in a youtube video link and generates a url link for the transcript api we are using.
-		transcript_url = generate_url(link)
-		# If the link is successfully generated
-		if isinstance(transcript_url, str):
-		# Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
-			text = get_transcripts(transcript_url)
+	# Takes in a youtube video link and generates a url link for the transcript api we are using.
+	transcript_url = generate_url(link)
+	# If the link is successfully generated
+	if isinstance(transcript_url, str):
+	# Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
+		text = get_transcripts(transcript_url)
 
-		# with open(link) as file:
-		# 	print("OPERATING ON:", link)
-		# 	text = file.read()
-			parsed_transcript = parse_xml(text)
+	# with open(link) as file:
+	# 	print("OPERATING ON:", link)
+	# 	text = file.read()
+		parsed_transcript = parse_xml(text)
 
-			# Iterates through all lines in the video and makes a bag of words.
-			words = []
-			for line in parsed_transcript:
-				new = line[-1].replace("<", " ").replace(">", "").replace("_", " ").replace(".", "").replace(",", "")\
-					.replace(":", "").replace("\n", " ").replace("?", " ").replace("!", " ").replace("\"", "")\
-					.replace("(", "'").replace(")", " ").replace("’", "'").replace("–", " ")
-				# print(new)
-				line[-1] = new
-				words += line[-1].split()
+		# Iterates through all lines in the video and makes a bag of words.
+		words = []
+		for line in parsed_transcript:
+			new = line[-1].replace("<", " ").replace(">", "").replace("_", " ").replace(".", "").replace(",", "")\
+				.replace(":", "").replace("\n", " ").replace("?", " ").replace("!", " ").replace("\"", "")\
+				.replace("(", "'").replace(")", " ").replace("’", "'").replace("–", " ")
+			# print(new)
+			line[-1] = new
+			words += line[-1].split()
 
-			clean_words = stop_word_removal(words)
+		clean_words = stop_word_removal(words)
 
-			top = top_bigrams(nlp, clean_words, 2, 5)
+		top = top_bigrams(nlp, clean_words, 2, 5)
 
-			keywords = []
+		keywords = []
 
-			for bi in top:
-				keywords.append(bi[0].split())
+		for bi in top:
+			keywords.append(bi[0].split())
 
-			normal_keywords = topics(parsed_transcript, keywords)
-			task = {}
-			if ret_type == "normal":
-				return_list = normal_keywords
-				for topic in return_list:
-					task[topic[0]] = {}
-					counter = 0
-					for cluster in topic[1]:
-						task[topic[0]][counter] = {}
-						for item in cluster:
-							task[topic[0]][counter][item[0]] = item[1]
-						counter += 1
-			else:
-				return_list = for_now(normal_keywords)
-				repeat_topics = []
-				for item in return_list:
-					if item[0].split(":")[0] not in repeat_topics:
-						task[item[0]] = str(float(item[1])-10)
-						repeat_topics.append(item[0].split(":")[0])
+		normal_keywords = topics(parsed_transcript, keywords)
+		task = {}
+		if ret_type == "normal":
+			return_list = normal_keywords
+			for topic in return_list:
+				task[topic[0]] = {}
+				counter = 0
+				for cluster in topic[1]:
+					task[topic[0]][counter] = {}
+					for item in cluster:
+						task[topic[0]][counter][item[0]] = item[1]
+					counter += 1
+		else:
+			return_list = for_now(normal_keywords)
+			repeat_topics = []
+			for item in return_list:
+				if item[0].split(":")[0] not in repeat_topics:
+					task[item[0]] = str(float(item[1])-10)
+					repeat_topics.append(item[0].split(":")[0])
 
 
 
-			print("Time: ", time.time() - n_start)
+		print("Time: ", time.time() - n_start)
 
-			pprint(task)
-
-			return task
+		return task
 
 
 		# input("~~~~~~~~~DONE WITH THAT LINK~~~~~~~~~~~~")
@@ -322,4 +319,4 @@ def main(nlp, ret_type):
 
 if __name__ == "__main__":
 	nlp = spacy.load("en")
-	pprint(main(nlp, ret_type="no"))
+	pprint(main(nlp, "no", "https://www.youtube.com/watch?v=2GQTfpDE9DQ"))

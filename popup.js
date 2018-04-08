@@ -39,7 +39,8 @@ function add(index, button_text, button_value) {
   element.style.width = "350px";
   element.style.border= "0.5px solid #ff1a1a";
 
-  // element.onclick =  button_click(element);// this is where you should JUMPPPPP
+  // element.onclick =  "button_click(this)";
+  element.addEventListener("click", button_click); // this is where you should JUMPPPPP
 
   // var foo = document.getElementById("resultfield");
   //Append the element in page (in span).  
@@ -62,8 +63,9 @@ function add(index, button_text, button_value) {
 
 
 var time = ""
-function button_click(element) {
-	console.log(element.value);
+function button_click(e) {
+	 
+  	time = e.target.value;
     chrome.tabs.query({url: "*://*.youtube.com/*"}, logTabs);
     // time = button_value
     // console.log(time)
@@ -77,10 +79,17 @@ function logTabs(tabs) {
   }
 }
 
+function seekVideo(tabid){
+	var codeToExecute = "document.querySelector('video').currentTime = " + time;
+
+	chrome.tabs.executeScript(tabid, {code: codeToExecute});
+}
 
 var i;
 for (i = 0; i < 10; i++) { 
-    add(i, "hello", "3");
+	var num = i * 10
+	var n = num.toString();
+    add(i, "hello", n);
 }
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -90,19 +99,7 @@ for (i = 0; i < 10; i++) {
 // var firstScriptTag = document.getElementsByTagName('script')[0];
 // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-function seekVideo(tabid){
 
-// var codeToExecute = 'document.querySelector(".ytp-play-button.ytp-button").click()';
-// var codeToExecute = 'document.getElementById("movie_player").seekTo(26)';
-var codeToExecute = "document.querySelector('video').currentTime = 20";
-
-
-var executing = chrome.tabs.executeScript(
-  		tabid,
-  		{code: codeToExecute}
-	);
-//executing.then(onExecuted, onError);
-}
 
 // {
 // 	"3.3"	: "I’ve had my ups and downs",

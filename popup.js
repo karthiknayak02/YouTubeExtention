@@ -25,7 +25,7 @@ document.getElementById('search').onclick = get_search_string;
 
 // dynamically adds butttons
 // button_text = ""
-function add(index, button_text, button_value) {
+function add(button_text, button_value) {
   //Create an input type dynamically.   
   var element = document.createElement("button");
   var br = document.createElement("br");
@@ -34,7 +34,7 @@ function add(index, button_text, button_value) {
   element.type = "button";
   element.value = button_value;
   element.innerHTML = button_text;
-  element.name = index; 
+  // element.name = index; 
   element.class = "terms"
   element.style.borderRadius = "10px";
   element.style.height = "30px";
@@ -71,12 +71,12 @@ function seekVideo(tabid){
 	chrome.tabs.executeScript(tabid, {code: codeToExecute});
 }
 
-var i;
-for (i = 0; i < 10; i++) { 
-	var num = i * 10
-	var n = num.toString();
-    add(i, "hello", n);
-}
+// var i;
+// for (i = 0; i < 10; i++) { 
+// 	var num = i * 10
+// 	var n = num.toString();
+//     add(i, "hello", n);
+// }
 
 // 2. This code loads the IFrame Player API code asynchronously.
 // var tag = document.createElement('script');
@@ -95,7 +95,15 @@ request.onload = function () {
 
   if (request.status >= 200 && request.status < 400) {
   	console.log(data)
-  	console.log(data.task.description)
+  	console.log(data.task)
+  	var p = data.task;
+
+  	for (var key in p) {
+    if (p.hasOwnProperty(key)) {
+        console.log(key + " -> " + p[key]);
+        add(p[key], key);
+    }
+}
   } else {
     console.log('error');
   }
@@ -103,15 +111,28 @@ request.onload = function () {
 
 request.send();
 
-// data.forEach(movie => {
-//   // Log each movie's title
-//   console.log(movie.title);
-// });
+// function post(path, params, method) {
+//     method = method || "post"; // Set method to post by default if not specified.
 
-// {
-// 	"3.3"	: "I’ve had my ups and downs",
-// 	"5.8"	: "my fair share of bumpy roads and heavy winds."
-// 	"9.868"	: "That’s what made me what I am today."
-// 	"13.901": "Now I stand here before you."
-// 	"16.985": "What you see is a body crafted to perfection"
+//     // The rest of this code assumes you are not using a library.
+//     // It can be made less wordy if you use one.
+//     var form = document.createElement("form");
+//     form.setAttribute("method", method);
+//     form.setAttribute("action", path);
+
+//     for(var key in params) {
+//         if(params.hasOwnProperty(key)) {
+//             var hiddenField = document.createElement("input");
+//             hiddenField.setAttribute("type", "hidden");
+//             hiddenField.setAttribute("name", key);
+//             hiddenField.setAttribute("value", params[key]);
+
+//             form.appendChild(hiddenField);
+//         }
+//     }
+
+//     document.body.appendChild(form);
+//     form.submit();
 // }
+
+// post('/todo/api/v1.0/tasks', {name: 'Johnny Bravo'});

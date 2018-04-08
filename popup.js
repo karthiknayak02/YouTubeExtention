@@ -36,8 +36,9 @@ function add(index, button_text, button_value) {
   element.innerHTML = button_text;
   element.name = index; 
   element.class = "terms"
+  element.style.borderRadius = "10px";
   element.style.height = "30px";
-  element.style.width = "350px";
+  element.style.width = "300px";
   element.style.border= "0.5px solid #ff1a1a";
 
   element.addEventListener("click", button_click); // this is where you JUMPPPPP

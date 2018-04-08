@@ -1,8 +1,11 @@
   button {
+    vertical-align: top;
+    margin-top: 5px;
     color: #444444;
-    background: #F3F3F3;
+    background: #FFFFFF;
+    height: 30px;
     border: 1px #DADADA solid;
-    padding: 5px 10px;
+    padding: 3px;
     border-radius: 2px;
     font-weight: bold;
     font-size: 9pt;
@@ -17,18 +20,18 @@
   }
 
   button.red {
-      background: -webkit-linear-gradient(top, #DD4B39, #D14836); 
-      background: -moz-linear-gradient(top, #DD4B39, #D14836); 
-      background: -ms-linear-gradient(top, #DD4B39, #D14836); 
-      border: 1px solid #DD4B39;
+      background: -webkit-linear-gradient(top, #FF0000, #FF0000); 
+      background: -moz-linear-gradient(top, #FF0000, #FF0000); 
+      background: -ms-linear-gradient(top, #FF0000, #FF0000); 
+      border: 1px solid #FF0000;
       color: white;
       text-shadow: 0 1px 0 #C04131;
   }
 
   button.red:hover {
-       background: -webkit-linear-gradient(top, #DD4B39, #C53727);
-       background: -moz-linear-gradient(top, #DD4B39, #C53727);
-       background: -ms-linear-gradient(top, #DD4B39, #C53727);
+       background: -webkit-linear-gradient(top, #FF0000, #C53727);
+       background: -moz-linear-gradient(top, #FF0000, #C53727);
+       background: -ms-linear-gradient(top, #FF0000, #C53727);
        border: 1px solid #AF301F;
   }
 
@@ -40,9 +43,10 @@
   }
 
   textarea {
+    vertical-align: top;
     margin-top: 5px;
-    width: 350px;
-    height: 15px;
+    width: 220px;
+    height: 17.5px;
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
     border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
     border-radius: 6px 6px 6px 6px;

@@ -76,7 +76,7 @@ def stop_word_removal(words):
 
 
 def top_bigrams(nlp, words, ngrams, count):
-	weights = {'VERB': 0.6, 'PROPN': 0.8, 'NOUN': 0.3, 'ADP': 0.1, 'ADJ': 0.1}
+	weights = {'VERB': 0.4, 'PROPN': 0.8, 'NOUN': 0.3, 'ADP': 0.01, 'ADJ': 0.01}
 	pprint(weights)
 	bi_list = []
 	for i in range(len(words) - ngrams + 1):
@@ -220,35 +220,30 @@ def for_now(groups):
 
 def main(nlp, ret_type, link):
 
-	# # SpaCy model loading <---------------- currently not using
-	# start = time.time()
-	# nlp = spacy.load("en")
-	# print("Model Load time:", time.time() - start)
-
-	noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
-	works = ["https://www.youtube.com/watch?v=2GQTfpDE9DQ",
-				 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
-				 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
-				 "https://www.youtube.com/watch?v=b4k-KPELNcc",
-				 "https://www.youtube.com/watch?v=8UhqkX2VAmo",
-				 "https://www.youtube.com/watch?v=6oLsJUH1cfU",
-				 "https://www.youtube.com/watch?v=fWqKalpYgLo",
-				 "https://www.youtube.com/watch?v=t8R_GKS-M2Y",
-				 "https://www.youtube.com/watch?v=JrRRvqgYgT0",
-				 "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
-	txt_files = ["timedtext12.xml",
-				 "timedtext1.xml",
-				 "timedtext2.xml",
-				 "timedtext3.xml",
-				 "timedtext4.xml",
-				 "timedtext5.xml",
-				 "timedtext6.xml",
-				 "timedtext7.xml",
-				 "timedtext8.xml",
-				 "timedtext9.xml",
-				 "timedtext10.xml",
-				 "timedtext0.xml",
-				 "timedtext11.xml"]
+	# noworks = ["https://www.youtube.com/watch?v=E8RrVitzI9I"]
+	# works = ["https://www.youtube.com/watch?v=2GQTfpDE9DQ",
+	# 			 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
+	# 			 "https://www.youtube.com/watch?v=TUgBd-yK7-4",
+	# 			 "https://www.youtube.com/watch?v=b4k-KPELNcc",
+	# 			 "https://www.youtube.com/watch?v=8UhqkX2VAmo",
+	# 			 "https://www.youtube.com/watch?v=6oLsJUH1cfU",
+	# 			 "https://www.youtube.com/watch?v=fWqKalpYgLo",
+	# 			 "https://www.youtube.com/watch?v=t8R_GKS-M2Y",
+	# 			 "https://www.youtube.com/watch?v=JrRRvqgYgT0",
+	# 			 "https://www.youtube.com/watch?v=g-ONUFFt2qM"]
+	# txt_files = ["timedtext12.xml",
+	# 			 "timedtext1.xml",
+	# 			 "timedtext2.xml",
+	# 			 "timedtext3.xml",
+	# 			 "timedtext4.xml",
+	# 			 "timedtext5.xml",
+	# 			 "timedtext6.xml",
+	# 			 "timedtext7.xml",
+	# 			 "timedtext8.xml",
+	# 			 "timedtext9.xml",
+	# 			 "timedtext10.xml",
+	# 			 "timedtext0.xml",
+	# 			 "timedtext11.xml"]
 
 	# for link in works:
 	n_start = time.time()
@@ -284,9 +279,14 @@ def main(nlp, ret_type, link):
 		for bi in top:
 			keywords.append(bi[0].split())
 
-		normal_keywords = topics(parsed_transcript, keywords)
+		if ret_type[0] == "search":
+			keywords = ret_type[1]
+			normal_keywords = topics(parsed_transcript, keywords)
+		else:
+			normal_keywords = topics(parsed_transcript, keywords)
+
 		task = {}
-		if ret_type == "normal":
+		if ret_type[0] == "normal":
 			return_list = normal_keywords
 			for topic in return_list:
 				task[topic[0]] = {}

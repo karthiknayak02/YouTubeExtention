@@ -5,8 +5,6 @@ import spacy
 import time
 from pprint import pprint
 from collections import Counter
-import pycurl
-from io import BytesIO
 
 stop_words = {'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't",
 			  'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't",
@@ -115,7 +113,7 @@ def get_transcripts(transcript_url):
 	if response.status_code == 200:
 		body = response.text
 		if body:
-			parse_xml(body)
+			return body
 		else:
 			print("This link has no text in it.")
 	else:
@@ -258,8 +256,8 @@ def main(nlp, ret_type):
 		if isinstance(transcript_url, str):
 
 		# Gets the transcript and parses it from an XML to a 2-D list of [[time, duration, text], ...]
-			text = get_body(transcript_url)
-
+			text = get_transcripts(transcript_url)
+			print("text:", text)
 			final_keywords = []
 
 		# with open(link) as file:
